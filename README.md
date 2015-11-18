@@ -325,6 +325,7 @@
 		kovetkezo = 0;
 		nem_kritikus_szekcio();
 	}
+	Hibás mutex/szemafor.
 
 #####Mi a memóriiakezelő feladata dinamikus memória használat során?
    - A „dinamikus memóriakezelés” azt jelenti, hogy egyes memóriaterületek foglalását és felszabadítását mi vezéreljük a programból. A „dinamikus” szó az időre utal. A memóriakezelő nem szabadíthatja fel engedély nélkül.
