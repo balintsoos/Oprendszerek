@@ -121,14 +121,12 @@
 #####Mi az SSTF ütemezés lényege?
    - Shortest Seek Time First, leghamarabb elérhetőt dolgozzuk fel először
 
-#####Milyen periféria kommunikációs módot ismer?
 #####Mi az Ext2FS, van-e MBR-je?-je.
    - Linux fájlrendszer és van MBR.
 
 #####Mi a TLB, mi a szerepe?
    - Translation Lookaside Buffer egy cache, amit a memória kezelő hardver használ, hogy gyorsítson a virtuális címfordítás sebességén.
 
-#####RAID-ek közti különbségek.
 #####Honnan származik, és mi a lényege a virtuális gépek(szerver) használatának?
 #####Mi a Round-Robin ütemezés lényege?
    - Körben járó ütemezés. Mindenkinek van időszelete, aminek a végén, vagy blokkolás esetén jön a következő folyamat. Időszelet végén a körkörös listában következő jön. Pártatlan, egyszerű. Egy listában tároljuk a folyamatok jellemzőit és ezen megyünk körbe.
@@ -171,7 +169,7 @@
 
 #####I/O szoftver modellje, milyen eszközkategóriákat ismer?
 #####Mit nevezünk kritikus tevékenységnek?
-   -
+   - Kritikus programterület, szekció, az a rész mikor a közös erőforrást (memóriát) használjuk.
 #####Mire szolgálnak a lapozási algoritmusok?
    - Ha nincs egy virtuális című lap a memóriában, akkor egy lapot ki kell dobni, és berakni ezt az új lapot.
 
