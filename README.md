@@ -250,10 +250,14 @@
    - Kölcsönös kizárásra, magasabb szinten. Akkor használható jól, ha CPU-knak közös memóriájuk van.
 
 #####Mire jó a "Dirty-bit", hol használják?
-   - Az MMU a lapok kezelésénél használja, ha a dirty bit 1 akkor módosult a lpkeret memória azaz lemezre íráskor tényleg ki kell írni.
+   - Az MMU (Memory Management Unit) a lapok kezelésénél használja
+   - Ha a dirty bit 1 akkor módosult a lapkeret memória, azaz lemezre íráskor tényleg ki kell írni.
 
 #####Mi a CHS-LBA címzés közti különbség? Van egyáltalán?
-   - CHS korlát 504MB, LBA minden szektor egyedi számot kap. A BIOS a megszakítások paramétereit az átalakított geometriából lemez geometriává alakítja CHS-nél, míg szektor számmá LBA-nál.
+   - CHS korlát 504MB
+   - LBA minden szektor egyedi számot kap.
+   - A BIOS a megszakítások paramétereit az átalakított geometriából lemez geometriává alakítja CHS-nél
+   - míg szektor számmá LBA-nál.
 
 #####Mit értünk monopol módú eszköz alatt?
    - Megszakíthatatlan, egyedi használatú eszköz.
@@ -277,26 +281,20 @@
    - Olyan operációs rendszerekre jellemző, amelyek egyszerre több folyamatot/szálat tudnak futtatni.
    - Az ütemező dönti el, hogy melyik folyamat futhat, de a látszattal ellentétben mindig csak egy folyamat fut.
 
-#####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
-#####Mit nevezünk valós idejű operációs rendszernek?
-#####I/O szoftver modellje, milyen eszközkategóriákat ismer?
-#####Honnan származik, és mi a lényege a virtuális gépek(szerver) használatának?
-
-
-
-
-
-#####Ismertesse egy partíció felépítését!(általánosan)
-
 #####Mi a hardver RAID és a szoftver RAID közti különbség, mi a működésük lényege?
+   - Ha oprendszer nyújtja, akkor szoftver RAID
+   - Ha külső vezérlőegység, akkor hardver RAID
+
+#####Mi az oka a 2TB HDD címzési határnak, Van ilyen egyáltalán?
+   - MBR mérete: 512 bájt
+   - 13-14-15-16. bájt: Szektorok száma
+   	- 4 bájt: 4 GB * 512 = 2 TB
 
 #####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
-#####Mit nevezünk valós idejű operációs rendszernek?
-#####I/O szoftver modellje, milyen eszközkategóriákat ismer?
+#####Ismertesse egy partíció felépítését!(általánosan)
 #####Mire szolgálnak a lapozási algoritmusok?
 #####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
 #####Mire használható a monitor?
-
 #####Mit takar az alábbi algoritmus részlet, mi a baj vele, ha van?
 	while(1)
 	{
@@ -313,21 +311,9 @@
 #####Melyik állítás lehet igaz? Miért?
 	- A: Szoftveresen kezelem le a hardver megszakítást.
 	- B: Hardveresen kezelem a szoftver megszakítást.
-
 #####Írja le egy operációs rendszer boot folyamatát!
 #####Mi az eszközmeghajtó program?
 #####Mi a mutex és egy egyszerű egész közti különbség? Van egyáltalán?
-#####Mi az oka a 2TB HDD címzési határnak, Van ilyen egyáltalán?
-
-
-
-
-
-
-
-
-
-
 
 ### Források:
    - előadás diák
