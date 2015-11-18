@@ -267,7 +267,7 @@
    - MBR (Master Boot Record) egy külön része a merevlemeznek, nincs összefüggésben a fájlrendszerekkel.
 
 #####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
-   ![TSL példa](/images/tsl01.png)
+   ![TSL példa](/images/TSL01.png)
    - Példa TSL-re! (Test and Set Lock: Akkor hajtódik végre, amikor egy folyamat a kritikus szekcióba akar lépni.)
 
 #####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
