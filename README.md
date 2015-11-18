@@ -291,7 +291,6 @@
    	- 4 bájt: 4 GB * 512 = 2 TB
 
 #####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
-#####Ismertesse egy partíció felépítését!(általánosan)
 #####Mire szolgálnak a lapozási algoritmusok?
 #####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
 #####Mire használható a monitor?
