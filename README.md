@@ -252,8 +252,6 @@
 #####Ismertesse a laptáblák szerepét! Vam köze a TLB-Hez?
    - A virtuális címtér lapokra van osztva,laptábána tároljuk a lapokat. Ezeken keresztül tudjuk elérni a memória lapjait.  64 bites címezésnél ez már megvalósíthatatlan, ezért használunk TBL-t mellette.
 
-#####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
-   -
 #####Mire használható a monitor?
    - Kölcsönös kizárásra, magasabb szinten. Akkor használható jól, ha CPU-knak közös memóriájuk van.
 
@@ -298,10 +296,27 @@
    - 13-14-15-16. bájt: Szektorok száma
    	- 4 bájt: 4 GB * 512 = 2 TB
 
-#####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
-#####Mire szolgálnak a lapozási algoritmusok?
+#####Milyen jellemző fájlrendszer elhelyezési stratégiákat ismer? Melyik veszteséges?
+   - Folytonos tárkiosztás
+   - Láncolt elhelyezkedés
+   - Indextáblás elhelyezkedés
+
+
+#####Mi az eszközmeghajtó program?
+   - Az a program, amely a közvetlen kommunikációt végzi.
+
+#####Melyik állítás lehet igaz? Miért?
+   - A: Szoftveresen kezelem le a hardver megszakítást.
+   - B: Hardveresen kezelem a szoftver megszakítást. (TALÁN)
+   	- Szoftveresen utasíthatom a hardvert, hogy szakítson meg egy folyamatot.
+
 #####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
-#####Mire használható a monitor?
+   - (SZERINTEM) A szerepek minden alkalommal cserélődhetnek, így az átlagos várakozási idő kicsi.
+
+
+
+
+
 #####Mit takar az alábbi algoritmus részlet, mi a baj vele, ha van?
 	while(1)
 	{
@@ -311,15 +326,8 @@
 		nem_kritikus_szekcio();
 	}
 
-#####Milyen jellemző fájlrendszer elhelyezési stratégiákat ismer? Melyik veszteséges?
 #####Mi a memóriiakezelő feladata dinamikus memória használat során?
-#####Mi az oka, hogy bizonyos helyzetben üzenetekkel biztosítjuk a kölcsönös kizárást?
-#####Mi a virtuális memóriakezelés és a virtuális gép közti különbség?
-#####Melyik állítás lehet igaz? Miért?
-	- A: Szoftveresen kezelem le a hardver megszakítást.
-	- B: Hardveresen kezelem a szoftver megszakítást.
-#####Mi az eszközmeghajtó program?
-#####Mi a mutex és egy egyszerű egész közti különbség? Van egyáltalán?
+   - A „dinamikus memóriakezelés” azt jelenti, hogy egyes memóriaterületek foglalását és felszabadítását mi vezéreljük a programból. A „dinamikus” szó az időre utal. A memóriakezelő nem szabadíthatja fel engedély nélkül.
 
 ### Egyebek:
 
@@ -369,9 +377,6 @@
 #####Optikai tárolók
    - CD, DVD - fényvisszaverődés alapján olvasható
 
-#####Eszközmeghajtó
-   - Az a program, amely a közvetlen kommunikációt végzi.
-
 #####Mágneslemez formázása
    - Quick format-Normal format: A normal format hibás szektorokat is keres.
    - Alacsony szintű formázás: szektorok kialakítása (ez gyártóknál elérhető)
@@ -387,11 +392,6 @@
 
 #####Könyvtár
    - Fájlok logikai csoportosítása
-
-#####Elhelyezési stratégiák
-   - Folytonos tárkiosztás
-   - Láncolt elhelyezkedés
-   - Indextáblás elhelyezkedés
 
 #####1 feladat-végrehajtás
    - 1 processzor + 1 rendszer memória + 1 I/O eszköz
@@ -409,19 +409,18 @@
    - Felhasználói szintű szálak: Kernel nem tud róluk, a folymatnak adott időszeletet a szálütemező dönti el, hogy ki használja. Gyors váltás a szálak között
    - Kernel szintű szálak: Kernel ismeri a szálakat, ő dönt, melyik follyamat szála következzen. Lassú váltás és két szál váltása között teljes környezet átkapcsolás kell.
 
-#####
+#####DMA működése
+   - CPU beállítja a DMA vezérlőt (regisztereket)
+   - A DMA a lemezvezérlőt kéri a megadott műveletre
+   - Miután a lemezvezérlő beolvasta a pufferébe, a rendszersínen keresztül a memóriába(ból) írja/ovassa az adatot
+   - Lemezvezérlő nyugtázza, hogy kész a kérés teljesítése
+   - DMA megszakítással jelzi, befejezte a műveletet
 
-#####
-
-#####
-
-#####
-
-#####
-
-#####
-
-#####
+#####I/O szoftverrendszer felépítése
+   - Megszakítást kezelő réteg
+   - Eszközmeghajtó programok (driver)
+   - Eszköz független operációs rendszer program
+   - Felhasználói I/O eszközt használó program
 
 ### Források:
    - előadás diák
