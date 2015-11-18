@@ -314,6 +314,40 @@
 #####Mi az eszközmeghajtó program?
 #####Mi a mutex és egy egyszerű egész közti különbség? Van egyáltalán?
 
+### Egyebek:
+
+#####Regiszter
+   - A regiszterek a CPU gyorsan írható/olvasható, ideiglenes tartalmú, általában 2-4 bájt feldolgozására alkalmas tárolóegységei.
+
+#####Megszakítások
+   - Szoftveres és hardveress megszakítás azonos.
+   - Hardveres megszakítás esetén amennyiben a megszakításkérés teljesíthető, a kezdeményező eszköz használhatja a CPU-t.
+   - Szoftveres megszakítás esetén a főprogram futását egy alprogram szakítja meg. Majd ha végzett, a főprogram tovább fut.
+
+#####Feladat maszkolása
+   - megszakítások engedélyezése, letiltása.
+
+#####Nem maszkolható feladatok
+   - súlyos hardver hiba, pl.: memóriahiba, vagy tápfeszültség kimaradás esetén keletkezik.
+
+#####Operációs rendszer
+   - Olyan program, ami egyszerű felhasználói felületet nyújt, eltakarva a rendszer eszközeit.
+
+#####API (Application Programming Interface)
+   - Egy program vagy rendszerprogram eljárásai és ezek dokumentációi, amelyet más programok felhasználhatnak.
+
+#####Firmware
+   - A gyártó által a hardverbe épített szoftver. (pl.: távkapcsoló)
+
+#####Middleware
+   - Operációs rendszer feletti réteg
+
+#####
+
+#####
+
+#####
+
 ### Források:
    - előadás diák
    - iNfeRuS4 innen: elte.sharq.hu
