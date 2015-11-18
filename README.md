@@ -230,7 +230,7 @@
    - A számítógépes fájlok tárolásának és rendszerezésének a módszere.
    - A sorrendi ütemezéssel olvashatunk és írhatunk a lemezre, aminek a rendszerét a fájlrendszer adja.
 
-#####Mit nevezünk kritikus tevékenységnek?
+#####Mit nevezünk kritikus tevékenységnek/programterületnek/szekciónak?
    - Kritikus programterület, szekció, az a rész mikor a közös erőforrást (memóriát) használjuk.
 
 #####Mire szolgálnak a lapozási algoritmusok?
@@ -266,14 +266,68 @@
    - File Allocation Table. Fájlrendszer típus. Láncolt listás nyilvántartás.
    - MBR (Master Boot Record) egy külön része a merevlemeznek, nincs összefüggésben a fájlrendszerekkel.
 
-#####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
+#####Mit takar, mire jó az alábbi algoritmus részlet, mi a jellemzője?
    ![TSL példa](/images/TSL01.png)
    - Példa TSL-re! (Test and Set Lock: Akkor hajtódik végre, amikor egy folyamat a kritikus szekcióba akar lépni.)
+
+#####Mondj példát láncolt szerkezetű fáljrendszerre!
+   - FAT (File Allocation Table) [32]
+
+#####Jellemezze a real time multitask rendszert röviden!
+   - Olyan operációs rendszerekre jellemző, amelyek egyszerre több folyamatot/szálat tudnak futtatni.
+   - Az ütemező dönti el, hogy melyik folyamat futhat, de a látszattal ellentétben mindig csak egy folyamat fut.
 
 #####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
 #####Mit nevezünk valós idejű operációs rendszernek?
 #####I/O szoftver modellje, milyen eszközkategóriákat ismer?
 #####Honnan származik, és mi a lényege a virtuális gépek(szerver) használatának?
+
+
+
+
+
+#####Ismertesse egy partíció felépítését!(általánosan)
+
+#####Mi a hardver RAID és a szoftver RAID közti különbség, mi a működésük lényege?
+
+#####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
+#####Mit nevezünk valós idejű operációs rendszernek?
+#####I/O szoftver modellje, milyen eszközkategóriákat ismer?
+#####Mire szolgálnak a lapozási algoritmusok?
+#####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
+#####Mire használható a monitor?
+
+#####Mit takar az alábbi algoritmus részlet, mi a baj vele, ha van?
+	while(1)
+	{
+		while(kovetkezo!=1);
+		kritikus_szekcio();
+		kovetkezo = 0;
+		nem_kritikus_szekcio();
+	}
+
+#####Milyen jellemző fájlrendszer elhelyezési stratégiákat ismer? Melyik veszteséges?
+#####Mi a memóriiakezelő feladata dinamikus memória használat során?
+#####Mi az oka, hogy bizonyos helyzetben üzenetekkel biztosítjuk a kölcsönös kizárást?
+#####Mi a virtuális memóriakezelés és a virtuális gép közti különbség?
+#####Melyik állítás lehet igaz? Miért?
+	- A: Szoftveresen kezelem le a hardver megszakítást.
+	- B: Hardveresen kezelem a szoftver megszakítást.
+
+#####Írja le egy operációs rendszer boot folyamatát!
+#####Mi az eszközmeghajtó program?
+#####Mi a mutex és egy egyszerű egész közti különbség? Van egyáltalán?
+#####Mi az oka a 2TB HDD címzési határnak, Van ilyen egyáltalán?
+
+
+
+
+
+
+
+
+
+
 
 ### Források:
    - előadás diák
