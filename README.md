@@ -18,6 +18,14 @@
    - Shortest Seek Time First. A legkisebb fejmozgatást részesíti előnyben.
    - Átlagos várakozás kicsi, várakozási idő szórása nagy. Fennáll a kiéheztetés veszélye.
 
+#####Pásztázó ütemezés (SCAN)
+   - A fej állandó mozgásban van, és a mozgás útjába eső kéréseket kielégíti.
+   - A fej mozgása megfordul, ha a mozgás irányába nincs kérés, vagy szélső pozíciót ért el
+
+#####Egyirányú pásztázás (C-SCAN)
+   - Csak egyirányú fejmozgás
+   - Nem igazán fordulhat elő rossz ütemű kérés
+
 #####Mi az i-node tábla?
    - Könyvtárszerkezet. UNIX rendszeren minden fájlt egy i-node ír le.
    - 15 rekeszből áll 12 fájl blokkra mutat. 13., 14. ha szükséges, akkor új i-node-ra mutat.
@@ -103,14 +111,14 @@
 
 #####Mi a monitor?
    - Kölcsönös kizárás magasabb szinten, lehetnek benne eljárások, adatszerkezetek.
-   - A monitoron belül egyszerre egy folyamat aktív, ezt a fordítóprogram automatikusan bizztosítja
-   - Egyfajta mutex, de a felhasználónak a megvalósításról nincs konkrét ismerete, sokkal biztonságosabb.
+   - A monitoron belül egyszerre egy folyamat aktív.
 
 #####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
    ![Monitor példa](/images/monitor01.png)
    - Monitor megvalósítása
 
 #####Mi a mutex?
+   - Kölcsönös kizárásnál használják
    - Bináris szemafor, 0 vagy 1 lehet az értéke. Pl. vasutas probléma: egyszerre csak egy vonat tud menni a sínen.
 
 #####Mi a soft real time rendszer?
@@ -136,8 +144,8 @@
    - Translation Lookaside Buffer egy cache, amit a memória kezelő hardver használ, hogy gyorsítson a virtuális címfordítás sebességén.
 
 #####Milyen I/O eszközkategóriákat ismer? Mi a kivétel?
-   - Blokkos eszközök
-   - Karakteres eszközök
+   - Blokkos eszközök: adott méretű blokkokban tároljuk az információt (pl.: HDD)
+   - Karakteres eszközök: csak jönnek és mennek a bájtok
    - Időzítő - kivétel nem blokkos és nem Karakteres
 
 #####Mi az MBR?
@@ -310,7 +318,6 @@
 #####Melyik állítás lehet igaz? Miért?
 	- A: Szoftveresen kezelem le a hardver megszakítást.
 	- B: Hardveresen kezelem a szoftver megszakítást.
-#####Írja le egy operációs rendszer boot folyamatát!
 #####Mi az eszközmeghajtó program?
 #####Mi a mutex és egy egyszerű egész közti különbség? Van egyáltalán?
 
@@ -341,6 +348,74 @@
 
 #####Middleware
    - Operációs rendszer feletti réteg
+
+#####Rendszerhívások
+   - Azok a szolgáltatások, amelyek az operációs rendszer és a felhasználói programok közötti kapcsolatot biztosítják.
+
+#####Operációs rendszer struktúrák
+   - Monolitikus rendszerek: Rendszerhívás során gyakran felügyelet (kernel) módba kerül a CPU. Nincs információ elrejtés.
+   - Rétegelt szerkezet: Gépkezelő, Felhaszánlói programok, I/O kezelés, Gépkezelő-folyamat, Memória kezelés, CPU és multiprogramozás
+
+#####Mágnesszalagok
+   - Nem olcsó, biztonsági mentésekre, nagy mennyiségű adat tárolására
+   - 800/1600 GB férőhely
+
+#####FDD (Floppy)
+   - Kör alakú lemez, sávokra és szektorokra bontható
+
+#####HDD
+   - Több lemez egymás alatti sávokkal: cilinder
+
+#####Optikai tárolók
+   - CD, DVD - fényvisszaverődés alapján olvasható
+
+#####Eszközmeghajtó
+   - Az a program, amely a közvetlen kommunikációt végzi.
+
+#####Mágneslemez formázása
+   - Quick format-Normal format: A normal format hibás szektorokat is keres.
+   - Alacsony szintű formázás: szektorok kialakítása (ez gyártóknál elérhető)
+   - Logikai formázás: a partíciók kialakítása (max 4 logikai rész)
+
+#####Boot folyamat:
+   - ROM-BIOS megvizsgálja, hogy lehet-e operációs rendszert betölteni
+   - Ha igen, betölti a lemez MBR programját a 7c00h címre
+   - Ezután az MBR megvizsgálja, mi az elsődleges partíció, majd betölti a memóriába.
+
+#####Fájl
+   - Adatok egy logikai csoportja, névvel és paraméterrel ellátva
+
+#####Könyvtár
+   - Fájlok logikai csoportosítása
+
+#####Elhelyezési stratégiák
+   - Folytonos tárkiosztás
+   - Láncolt elhelyezkedés
+   - Indextáblás elhelyezkedés
+
+#####1 feladat-végrehajtás
+   - 1 processzor + 1 rendszer memória + 1 I/O eszköz
+
+#####Kooperatív rendszer
+   - az aktuális folyamat bizonyos időközönként, vagy időkritikus műveleteknék önként lemond a CPU-ról.
+
+#####Preemtív rendszer
+   - Az aktuuális folyamattól a kernel bizonyos idő után elveszi a vezérlést és a következő várakozó folyamatnak adja.
+
+#####Folyamatok kapcsolata
+   - 1 folyamat -> 1 szülő -> több gyerek
+
+#####Szálütemezés
+   - Felhasználói szintű szálak: Kernel nem tud róluk, a folymatnak adott időszeletet a szálütemező dönti el, hogy ki használja. Gyors váltás a szálak között
+   - Kernel szintű szálak: Kernel ismeri a szálakat, ő dönt, melyik follyamat szála következzen. Lassú váltás és két szál váltása között teljes környezet átkapcsolás kell.
+
+#####
+
+#####
+
+#####
+
+#####
 
 #####
 
