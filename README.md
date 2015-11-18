@@ -37,6 +37,9 @@
    - Ha a szemafor>0, akkor be szabad lépni a kritikus szakaszra.
    - Két művelete van: Belépéskor csökkentjük a szemafor értékét, kilépéskor növeljük. Ezek elemi műveletek.
 
+#####Mit takar az alábbi algoritmus, mi a jellemzője?
+   ![Szemafor példa](/images/szemafor01.png) ![Szemafor példa](/images/szemafor02.png)
+
 #####Mi a különbség a szemafor és a mutex között?
    - A mutex bináris szemafor, csak 0 és 1 lehet az értéke, míg a szemafornak 0 vagy több.
    - Pl.: vasúti sínen csak egy vonat haladhat át.
@@ -65,11 +68,13 @@
 
 #####Mi a RAID(1..5), mi a működésének a lényege?
    - Redundant Array of Inexpensive Disks.
-   - RAID1: Két független lemezből készít egy logikai egységet, egyszerre menti mindkettőre. Tároló kapacitás felére csökken
-   - RAID2: Adatbitek mellett hibajavító biteket tartalmaz. ECC pl. 4 diszkhez 3 javító diszk.
-   - RAID3: Elég egy plusz paritásdiszk n+1 diszk, szum n a kapacitás
+   - RAID0: Több lemez logikai összefűzésével új meghajtót kapunk. (összkapacitás lesz az új lemez kapacitása) Nincs védelem.
+   - RAID1: Két független lemezből készít egy logikai egységet, egyszerre menti mindkettőre.(tükrözés) Tároló kapacitás felére csökken.
+   - RAID2: Adatbitek mellett hibajavító biteket tartalmaz. Azaz +1 diszk.
+   - RAID3: Plusz paritásdiszk. Azaz +1 diszk
    - RAID4: RAID0 + paritásdiszk
-   - RAID5: Nincs paritás diszk, el van osztva a tömb összes elemére. Adatok elosztva kerülnek tárolásra. A paritásbitből meg a többiből egy eltűnt kiszámítható.
+   - RAID5: Nincs paritás diszk, el van osztva a tömb összes elemére. Adatok elosztva kerülnek tárolásra. Két lemez egyidejű meghibásodása esetén okoz adatvesztést. Azaz +1 diszket igényel.
+   - RAID6: RAID 5 kiegészítése paritásdiszkekkel. Azaz +2 diszk szükséges.
 
 #####Mi a kölcsönös kizárás, mik a megvalósítás feltételei?
    - Módszer ami biztosítja, hogy a közös adatokat egyszerre csak egy folyamat tudja használni.
@@ -97,21 +102,34 @@
    - A monitoron belül egyszerre egy folyamat aktív, ezt a fordítóprogram automatikusan bizztosítja
    - Egyfajta mutex, de a felhasználónak a megvalósításról nincs konkrét ismerete, sokkal biztonságosabb.
 
+#####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
+   ![Monitor példa](/images/monitor01.png)
+   Monitor megvalósítása
+
 #####Mi a mutex?
    - Bináris szemafor, 0 vagy 1 lehet az értéke. Pl. vasutas probléma: egyszerre csak egy vonat tud menni a sínen.
 
-#####Mit takar az alábbi algoritmus, mi a jellemzője?
-   ![Szemafor példa](/images/szemafor01.png) ![Szemafor példa](/images/szemafor02.png)
-
 #####Mi a soft real time rendszer?
-   - Egy valós idejű ütemezési rendszer, ahol a határidőket lazábban vehetjük. Kis mértékben elmulaszthatjuk a határidőket.
+   - Egy valós idejű ütemezési rendszer. Léteznek határidők, de ezek kismértékű elmulasztása tolerálható.
 
 #####Mit jelent a monitor "condition" típusa?
-   - Állapot változó, arra szolgál, ha egy folyamat nem tud továbbmenni a monitoron, két művelete van wait, signal;
+   - Állapot változó, arra szolgál, ha egy folyamat nem tud továbbmenni a monitoron.
+   - Két művelete van: wait, signal.
+
+#####Mi a garantált ütemezés lényege?
+   - Minden folyamat arányos CPU időt kap.
+   - Nyilvántartjuk, hogy egy folyamat eddig mennyit kapott, aki kevesebbet kapott az kerül előre.
 
 #####Mi az arányos ütemezés lényege?
-   - Minden aktív folyamat arányos CPU időt kap, nyilvántartjuk, hogy egy folyamat eddig mennyit kapott, aki kevesebbet kapott az kerül előre. (ez a garantált ütemezés) +
-   - a felhasználókra vonatkoztatuk.
+   - Minden felhasználó arányos CPU időt kap, attól függetlenül, hogy hány folyamatot futtatnak.
+   - Nyilvántartjuk, hogy egy felhasználó eddig mennyit kapott, aki kevesebbet kapott az kerül előre.
+
+#####Mi az Ext2FS, van-e MBR-je?
+   - Fájlrendszer típus, minden merevlemeznek van MBR-je függetlenül a fájlrendszertől.
+   - Fájlrendszernek nincs MBR-je!
+
+#####Mi a TLB, mi a szerepe?
+   - Translation Lookaside Buffer egy cache, amit a memória kezelő hardver használ, hogy gyorsítson a virtuális címfordítás sebességén.
 
 #####Milyen I/O eszközkategóriákat ismer? Mi a kivétel?
    - Blokkos eszközök
