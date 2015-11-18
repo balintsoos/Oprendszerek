@@ -12,41 +12,50 @@
    - Az IBM-től származik az elv. Pl. nem érdekel, hogyan teszi át akarok másolni egy képet.
 
 #####Mi a CHS címzés?
-   - Cilinder-Head-Selecor, mágneslemeznél adatok címzésére használjuk
+   - Cilinder-Head-Selecor, mágneslemeznél adatok címzésére használjuk. (mágneslemez felépítési példa)
 
 #####Írja le az SSTF ütemezés lényegét és jellemzőit!
-   - Shortest Seek Time First-leghamarabb elérhetőt először. A legkisebb fejmozgatást részesíti előnyben, átlagos várakozás kicsi,
-   tviteli sávszélesség nagy. Kiéheztetés veszélye
+   - Shortest Seek Time First. A legkisebb fejmozgatást részesíti előnyben.
+   - Átlagos várakozás kicsi, várakozási idő szórása nagy. Fennáll a kiéheztetés veszélye.
 
 #####Mi az i-node tábla?
-   - UNIX rendszeren minden fájlt egy i-node ír le. 15 rekeszből áll 12 fájl blokkra mutat. 13., 14. új i-node-ra mutat.
+   - Könyvtárszerkezet. UNIX rendszeren minden fájlt egy i-node ír le.
+   - 15 rekeszből áll 12 fájl blokkra mutat. 13., 14. ha szükséges, akkor új i-node-ra mutat.
 
 #####Az operációs rendszerek folyamatainak milyen állapotait, állapotátmeneteit ismerjük?
    - Futó
    - Futásra kész, ideiglenesen leállították, CPU időre vár.
    - Blokkolt, ha logikailag nem lehet folytatni, pl. másik folyamat eredményére vár.
-   - Állapot átmenetek: futó -> blokkolt, futó -> futásra kész, -> blokkolt -> futásra kész
+   - Állapot átmenetek: futó -> blokkolt, blokkolt -> futásra kész, futásra kész -> futó
 
 #####A kölcsönös kizárás Peterson féle megoldásának mi a lényege? (algoritmus)
-   - A kritikus szakasz előtt meghívjuk a belépés, és utána a kilépés fv-t.
+   - A kritikus szakasz előtt minden folyamat meghívja a belépés, majd utána a kilépés fv-t.
 
 #####Mi a szemafor?
-   - Dijkstra javasolja, egy változótípus. A szemafor tilosat mutat(0) akkor a folyamat elalszik, ha a szemafor>0, akkor be szabad lépni a kritikus szakaszra. Két művelete van: Belépéskor csökkentjük a szemafor értékét, kilépéskor növeljük. Ezek elemi műveletek.
+   - Dijkstra által javasolt változótípus.
+   - Ha a szemafor tilosat mutat(0) akkor a folyamat elalszik
+   - Ha a szemafor>0, akkor be szabad lépni a kritikus szakaszra.
+   - Két művelete van: Belépéskor csökkentjük a szemafor értékét, kilépéskor növeljük. Ezek elemi műveletek.
 
 #####Mi a különbség a szemafor és a mutex között?
-   - A mutex bináris szemafor, csak 0 és 1 lehet az értéke, a szemafornak 0 vagy több, lehet egyszerre több folyamat a kritikus szakaszban(??)
+   - A mutex bináris szemafor, csak 0 és 1 lehet az értéke, míg a szemafornak 0 vagy több.
+   - Pl.: vasúti sínen csak egy vonat haladhat át.
 
 #####Mit értünk folyamatok ütemezésén?
    - Több feladat futásakor el kell dönteni, hogy melyik fusson, ezt a döntést végzi el az ütemező egy algoritmus alapján.
 
 #####Mit jelent a holtpont gráfmodellje?
-   - Holtpont feltételek ábrázolása gráfokkal. Az erőforrásokat és a folyamatokat tartalmazza. Ha az erőforrások, folyamatok gráfjában kör van, az holtpontot jelent.
+   - Holtpont feltételek ábrázolása irányított gráfokkal, ahol egy folyamatot kör, egy erőforrást négyzet jelöl.
+   - Ha az erőforrások, folyamatok gráfjában kör van, az holtpontot jelent.
 
 #####Ismertesse a bankár algoritmust! Lényege!
-   - Minden kérés esetén megnézi, hogy a teljesítése biztonságos-e. Úgy osztja el az erőforrásokat, hogy legalább egy kérés biztosan be tudjon fejeződni, így amikor vissza adja az általa használt erőforrásokat akkor a többi kérésnek több jut.
+   - Minden kérés esetén megnézi, hogy a teljesítése biztonságos-e.
+   - Biztonságos állapot: létezik olyan kezdődő állapotsorozat, melynek eredményeként mindegyik folyamat megkapja a kívánt erőforrásokat és befejeződik.
+   - Ha az algoritmus ilyen állapothoz vezet, akkor jóváhagyja, ha nem, akkor a kérést elhalasztja.
+   - Úgy osztja el az erőforrásokat, hogy legalább egy kérés biztosan be tudjon fejeződni, így amikor vissza adja az általa használt erőforrásokat akkor a többi kérésnek több jut.
 
 #####Mi a POSIX?
-   - Portable Operating System Interface for uniX - szabványos minimális rendszerhívás készlet, egy API
+   - Portable Operating System Interface for uniX - minimális rendszerhívás készlet, szabvány.
 
 #####Mik a(z) (1., 2., 3., 4.) generációs operációs rendszerek jellemzői?
    - 1. gen.: kapcsolótábla, vákumcső, relé, gépi kód, lyukkártyák
@@ -55,6 +64,7 @@
    - 4. gen.: személyi számítógépek; LSI áramkörök; CPU fejlődés; Hálózati osztott rendszerek;
 
 #####Mi a RAID(1..5), mi a működésének a lényege?
+   - Redundant Array of Inexpensive Disks.
    - RAID1: Két független lemezből készít egy logikai egységet, egyszerre menti mindkettőre. Tároló kapacitás felére csökken
    - RAID2: Adatbitek mellett hibajavító biteket tartalmaz. ECC pl. 4 diszkhez 3 javító diszk.
    - RAID3: Elég egy plusz paritásdiszk n+1 diszk, szum n a kapacitás
@@ -62,22 +72,36 @@
    - RAID5: Nincs paritás diszk, el van osztva a tömb összes elemére. Adatok elosztva kerülnek tárolásra. A paritásbitből meg a többiből egy eltűnt kiszámítható.
 
 #####Mi a kölcsönös kizárás, mik a megvalósítás feltételei?
-   - Módszer ami biztosítja, hogy a közös adatokat egyszerre csak egy folyamat tudja használni. Feltételei: Nincs két folyamat egyszerre a kritikus szekcióban, nincs sebesség CPU, paraméter függőség, egyetlen kritikus szekción kívül lévő folyamat sem blokkolhat msik folyamatot. Egy folyamat sem vár örökké, hogy a kritikus szekcióba tudjon lépni.
+   - Módszer ami biztosítja, hogy a közös adatokat egyszerre csak egy folyamat tudja használni.
+   - Feltételei:
+      - Nincs két folyamat egyszerre a kritikus szekcióban
+      - nincs CPU paraméter függőség
+      - egyetlen kritikus szekción kívül lévő folyamat sem blokkolhat msik folyamatot
+      - Egy folyamat sem vár örökké, hogy a kritikus szekcióba tudjon lépni.
 
 #####Ismertesse a kölcsönös kizárás megvalósítását TSL utasítással!
    - Atomi művelet, a belépéskor TSL lock kerül a regiszterbe, a kilépésig zárolja a memóriasínt.
 
 #####Ismertesse a folytonos tárkiosztás(lemez) stratégiáit, jellemzőit!
-   - Egy elhelyezési stragétia, First Fit, Best Fit, Worst Fit(olyan memória szakaszba tesszük, hogy a lehető legnagyobb rész maradjon szabadon), veszteséges lemezkihasználás.
+   - Egy elhelyezési stragétia
+   - First Fit: A legelső helyre teszi az adatot, ahova még egyben befér
+   - Best Fit: A legkisebb helyre teszi az adatot, ahova még egyben befér
+   - Worst Fit: A lehető legnagyobb szakaszba teszi, veszteséges lemezkihasználás
 
 #####Mi a randevú stratégia?
-   - Ideiglenes tárolóhelyek (levelesládák) elhagyása, ha a send előtt van a recieve a küldő blokkolódik, illetve fordítva. pl. minix3 adatcső kommunikáció.
+   - Üzenetküldés összegzését el lehet hagyni
+   - Ha a send előtt van a recieve a küldő blokkolódik, illetve fordítva. pl. minix3 adatcső kommunikáció.
 
 #####Mi a monitor?
-   - Kölcsönös kizárás magasabb szinten, lehetnek benne eljárások, adatszerkezetek, a monitoron belül egyszerre egy folyamat aktív, ezt a fordítóprogram automatikusan bizztosítja; Egyfajta mutex, de a felhasználónak a megvalósításról nincs konkrét ismerete, sokkal biztonságosabb.
+   - Kölcsönös kizárás magasabb szinten, lehetnek benne eljárások, adatszerkezetek.
+   - A monitoron belül egyszerre egy folyamat aktív, ezt a fordítóprogram automatikusan bizztosítja
+   - Egyfajta mutex, de a felhasználónak a megvalósításról nincs konkrét ismerete, sokkal biztonságosabb.
 
 #####Mi a mutex?
    - Bináris szemafor, 0 vagy 1 lehet az értéke. Pl. vasutas probléma: egyszerre csak egy vonat tud menni a sínen.
+
+#####Mit takar az alábbi algoritmus, mi a jellemzője?
+   ![Szemafor példa](/images/szemafor01.png) ![Szemafor példa](/images/szemafor02.png)
 
 #####Mi a soft real time rendszer?
    - Egy valós idejű ütemezési rendszer, ahol a határidőket lazábban vehetjük. Kis mértékben elmulaszthatjuk a határidőket.
