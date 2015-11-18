@@ -39,6 +39,7 @@
 
 #####Mit takar az alábbi algoritmus, mi a jellemzője?
    ![Szemafor példa](/images/szemafor01.png) ![Szemafor példa](/images/szemafor02.png)
+   - Szemafor megvalósítása
 
 #####Mi a különbség a szemafor és a mutex között?
    - A mutex bináris szemafor, csak 0 és 1 lehet az értéke, míg a szemafornak 0 vagy több.
@@ -87,6 +88,9 @@
 #####Ismertesse a kölcsönös kizárás megvalósítását TSL utasítással!
    - Atomi művelet, a belépéskor TSL lock kerül a regiszterbe, a kilépésig zárolja a memóriasínt.
 
+#####Ismertesse a kölcsönös kizárás „szigorú váltogatás” megvalósítását!
+   - A kölcsönös kizárás feltételeit teljesíti kivéve azt hogy egyetlen kritikus szekción kívüli folyamat sem blokkolhat másik folyamatot. 
+
 #####Ismertesse a folytonos tárkiosztás(lemez) stratégiáit, jellemzőit!
    - Egy elhelyezési stragétia
    - First Fit: A legelső helyre teszi az adatot, ahova még egyben befér
@@ -104,7 +108,7 @@
 
 #####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
    ![Monitor példa](/images/monitor01.png)
-   Monitor megvalósítása
+   - Monitor megvalósítása
 
 #####Mi a mutex?
    - Bináris szemafor, 0 vagy 1 lehet az értéke. Pl. vasutas probléma: egyszerre csak egy vonat tud menni a sínen.
@@ -152,13 +156,17 @@
    - Folyamatok erőforrás görbéje ábrázolja, hogy mikor mennyi erőforrásra van szüksége a folyamatoknak, és hol alakulhat ki holtpont, ez segít úgy tervezni, hogy elkerüljük a holtpontot, pl. bankár algoritmusnál használjuk.
 
 #####Mit értünk virtuális memóriakezelésen, mi a lényege? Mi a lapozás?
-   - Egy program használhat több memóriát, mint a rendelkezésre álló fizikai méret. Egy program a virtuális memória térben tartózkodik. A vírtuális címtér lapokra van osztva. Ha az MMU látja, hogy egy lap nincs a memóriában, akkor laphibát okoz, op. rendszer kitesz egy lapkeretet majd behozza a szükséges lapot.
+   - Egy program használhat több memóriát, mint a rendelkezésre álló fizikai méret.
+   - A memóriában tárolt, de éppen nem használt blokkokat kiírja a külső tárolóra.
+   - A virtuális címtér „lapokra” van osztva. Lapozásnak hívjuk, mikor a logikai címből előállítjuk a fizikai címet.
 
 #####Mi a szoftveres és a hardveres megszakítás közti különbség? Van egyáltalán?
    - A szoftveres megszakítás kezelése azonos a hardveres megszakítás kezelésével.
 
-#####Mi a sorsjáték ütemezés, lényege?
-   - A folyamatok között sorsjegyeket osztunk szét, és az kapja a vezérlést akinél a kihúzott jegy van. Arányos CPU idő biztosítás.
+#####Mi a sorsjáték ütemezés, lényege, hol használják?
+   - A folyamatok között sorsjegyeket osztunk szét és az kapja a vezérlést akinél a kihúzott jegy van
+   - Arányos CPU idő biztosítás.
+   - Hasznos pl. video szervereknél.
 
 #####Mi az SSTF ütemezés lényege?
    - Shortest Seek Time First, leghamarabb elérhetőt dolgozzuk fel először
@@ -169,55 +177,69 @@
 #####Mi a TLB, mi a szerepe?
    - Translation Lookaside Buffer egy cache, amit a memória kezelő hardver használ, hogy gyorsítson a virtuális címfordítás sebességén.
 
-#####Honnan származik, és mi a lényege a virtuális gépek(szerver) használatának?
 #####Mi a Round-Robin ütemezés lényege?
-   - Körben járó ütemezés. Mindenkinek van időszelete, aminek a végén, vagy blokkolás esetén jön a következő folyamat. Időszelet végén a körkörös listában következő jön. Pártatlan, egyszerű. Egy listában tároljuk a folyamatok jellemzőit és ezen megyünk körbe.
+   - Körben járó ütemezés. Mindenkinek van időszelete, aminek a végén, vagy blokkolás esetén jön a következő folyamat.
+   - Egy listában tároljuk a folyamatok jellemzőit és ezen megyünk körbe.
 
 #####Milyen partíciónak nincs i-node táblája?
    - Csak a UNIX rendszereknek van i-node táblája.
 
 #####Mi a RAID0+1 illetve RAID1+0 lemezek közti különbség?
    - RAID 1+0: Tükrös diszkekből vonunk össze többet
-   - RAID 0+1: Raid 0 összevont lemezcsoportból veszünk kettőt.
+   - RAID 0+1: RAID0 összevont lemezcsoportból veszünk kettőt.
 
-#####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
 #####Mit nevezünk szegmentált memóriakezelésnek?
-   - Egymástól független címtereket hozunk létre, ezeket szegmenseknek nevezzük. 2 részből áll az elérési címük : szegmens szám és ezen belüli eltolás.
+   - Egymástól független címtereket hozunk létre, ezeket szegmenseknek nevezzük.
+   - Minden szegmensnek megvan a saját 0-tól kezdődő címtartománya.
+   - 2 részből áll az elérési címük : szegmens címből és offset címből.
    
 #####Mi a valós idejű ütemezés lényege?
-   - Garantáljuk adott határidőre a válaszadást. Hard Time - nem módosítható határidők, Soft Real Time - kis mértékű időbeli eltolódás tolerálható. A programot több kisebb folyamatokr a bontják.
+   - Garantáljuk adott határidőre a válaszadást.
+   - Hard Time - nem módosítható határidők
+   - Soft Real Time - kis mértékű időbeli eltolódás tolerálható.
+   - A programot több kisebb folyamatokr a bontják.
 
 #####Milyen processzor védelmi szinteket ismer, hol használjuk ezeket?
-   - 4 szintet különböztetünk meg, ebből 2-t használunk: kernel mód, felhasználói mód.
-   - Kernel mód: felügyelt mód
-   - Felhasználói mód: oprendszer, feladatok
+   - Intel 80286: minden utasítás egyenlő
+   - Intel 80386:
+      - 4 szintet különböztetünk meg, ebből 2-t használunk: kernel mód, felhasználói mód.
+      - Kernel mód: felügyelt mód
+      - Felhasználói mód: oprendszer, feladatok
+   - A Unix és Windows világ is ezt használja.
 
-#####Ismertesse a "probléma figyelmen kívül hagyása" módszert! Hol alkalmazzák?
-   - Holtpont kezelési módszer, egyszerűen figyelmen kívül hagyuk, hátha nem okoz gondot, nagyon ritkán alakul ki és költséges a figyelése, ezért nem is figyelünk rá, Windows, Unix ezt használja.
+#####Ismertesse a "probléma figyelmen kívül hagyása" módszert! Hol alkalmazzák? ("strucc" módszer)
+   - Holtpont kezelési módszer
+   - Egyszerűen figyelmen kívül hagyuk és reménykedünk, hátha nem okoz gondot
+   - Nagyon ritkán alakul ki és költséges a figyelése, ezért nem is figyelünk rá
+   - Windows, Unix ezt használja.
 
 #####Mi az MFT?
-   - Master File Table, ezzel kezdődik az NTFS partició, 16 attribútum ad egy fájl bejegyzést, minden attribútum max 1kb. Ha ez nem elég, akkor egy attribútum mutat a folytatásra. Nincs fájlméret maximum.
+   - Master File Table
+   - Ezzel kezdődik az NTFS partició
+   - 16 attribútum ad egy fájl bejegyzést, minden attribútum max 1kb.
+   - Ha ez nem elég, akkor egy attribútum mutat a folytatásra. Nincs fájlméret maximum.
 
 #####Mi a probléma a kölcsönös kizárás szigorú váltogatásos megvalósítással?
    - Egy folyamat blokkolhatja saját magát.
 
-#####Mit jelent az "interleave" fogalma?
-#####Mit nevezünk valós idejű operációs rendszernek?
 #####Milyen fájlrendszer specifikus fájlokat ismer? Hol találhatók átalában?
-   - Karakter,blokk fájlok, /dev könyvtár
+   - Karakter,blokk fájlok
+   - /dev könyvtárban találhatóak
 
 #####Mit nevezünk fájlrendszernek, mi köze van az FCFS ütemezéshez?
-   - A számítógépes fájlok tárolásának és rendszerezésének a módszere.A sorrendi ütemezéssel olvashatunk és írhatunk a lemezre, aminek a rendszerét a fájlrendszer adja.
+   - A számítógépes fájlok tárolásának és rendszerezésének a módszere.
+   - A sorrendi ütemezéssel olvashatunk és írhatunk a lemezre, aminek a rendszerét a fájlrendszer adja.
 
-#####I/O szoftver modellje, milyen eszközkategóriákat ismer?
 #####Mit nevezünk kritikus tevékenységnek?
    - Kritikus programterület, szekció, az a rész mikor a közös erőforrást (memóriát) használjuk.
+
 #####Mire szolgálnak a lapozási algoritmusok?
    - Ha nincs egy virtuális című lap a memóriában, akkor egy lapot ki kell dobni, és berakni ezt az új lapot.
 
 #####Mi a különbség folyamatok és szálak között? Van egyáltalán?
    - A szál egy folyamaton belüli utasítás sor. Lehet több is egy folyamaton belül
-   - csak a folyamatoknak van: címtartománya, globális változója, megnyitott fájl leírója, gyermek folyamata, szignálkezelője, ébresztője
+   - csak a folyamatoknak van: címtartománya, globális változója, gyermek folyamata, szignálkezelője...
+   - csak szálnak van: utasításszámláló, regiszterek, verem
 
 #####Ismertesse a laptáblák szerepét! Vam köze a TLB-Hez?
    - A virtuális címtér lapokra van osztva,laptábána tároljuk a lapokat. Ezeken keresztül tudjuk elérni a memória lapjait.  64 bites címezésnél ez már megvalósíthatatlan, ezért használunk TBL-t mellette.
@@ -232,6 +254,26 @@
 
 #####Mi a CHS-LBA címzés közti különbség? Van egyáltalán?
    - CHS korlát 504MB, LBA minden szektor egyedi számot kap. A BIOS a megszakítások paramétereit az átalakított geometriából lemez geometriává alakítja CHS-nél, míg szektor számmá LBA-nál.
+
+#####Mit értünk monopol módú eszköz alatt?
+   - Megszakíthatatlan, egyedi használatú eszköz.
+   - 
+#####Mit jelent az "interleave" fogalma?
+   - Lemezek forgási sebessége miatt a blokkok nem feltétlenül szomszédosak
+   - Interleave: párosával „szomszédosak”
+
+#####Mi a FAT, van-e MBR-je?
+   - File Allocation Table. Fájlrendszer típus. Láncolt listás nyilvántartás.
+   - MBR (Master Boot Record) egy külön része a merevlemeznek, nincs összefüggésben a fájlrendszerekkel.
+
+#####Mit takar az alábbi algoritmus részlet, mi a jellemzője?
+   ![TSL példa](/images/tsl01.png)
+   - Példa TSL-re! (Test and Set Lock: Akkor hajtódik végre, amikor egy folyamat a kritikus szekcióba akar lépni.)
+
+#####Honnan származik az op.rendszer virtualizáció, mik a jellemzői, mi köze a virtuális memóriakezeléshez?
+#####Mit nevezünk valós idejű operációs rendszernek?
+#####I/O szoftver modellje, milyen eszközkategóriákat ismer?
+#####Honnan származik, és mi a lényege a virtuális gépek(szerver) használatának?
 
 ### Források:
    - előadás diák
