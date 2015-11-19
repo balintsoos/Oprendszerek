@@ -176,15 +176,6 @@
    - Arányos CPU idő biztosítás.
    - Hasznos pl. video szervereknél.
 
-#####Mi az SSTF ütemezés lényege?
-   - Shortest Seek Time First, leghamarabb elérhetőt dolgozzuk fel először
-
-#####Mi az Ext2FS, van-e MBR-je?-je.
-   - Linux fájlrendszer és van MBR.
-
-#####Mi a TLB, mi a szerepe?
-   - Translation Lookaside Buffer egy cache, amit a memória kezelő hardver használ, hogy gyorsítson a virtuális címfordítás sebességén.
-
 #####Mi a Round-Robin ütemezés lényege?
    - Körben járó ütemezés. Mindenkinek van időszelete, aminek a végén, vagy blokkolás esetén jön a következő folyamat.
    - Egy listában tároljuk a folyamatok jellemzőit és ezen megyünk körbe.
@@ -208,11 +199,9 @@
    - A programot több kisebb folyamatokr a bontják.
 
 #####Milyen processzor védelmi szinteket ismer, hol használjuk ezeket?
-   - Intel 80286: minden utasítás egyenlő
-   - Intel 80386:
-      - 4 szintet különböztetünk meg, ebből 2-t használunk: kernel mód, felhasználói mód.
-      - Kernel mód: felügyelt mód
-      - Felhasználói mód: oprendszer, feladatok
+   - 4 szintet különböztetünk meg, ebből 2-t használunk: kernel mód, felhasználói mód.
+   - Kernel mód: felügyelt mód
+   - Felhasználói mód: oprendszer, feladatok
    - A Unix és Windows világ is ezt használja.
 
 #####Ismertesse a "probléma figyelmen kívül hagyása" módszert! Hol alkalmazzák? ("strucc" módszer)
@@ -249,8 +238,8 @@
    - csak a folyamatoknak van: címtartománya, globális változója, gyermek folyamata, szignálkezelője...
    - csak szálnak van: utasításszámláló, regiszterek, verem
 
-#####Ismertesse a laptáblák szerepét! Vam köze a TLB-Hez?
-   - A virtuális címtér lapokra van osztva,laptábána tároljuk a lapokat. Ezeken keresztül tudjuk elérni a memória lapjait.  64 bites címezésnél ez már megvalósíthatatlan, ezért használunk TBL-t mellette.
+#####Ismertesse a laptáblák szerepét! Van köze a TLB-Hez?
+   - A virtuális címtér lapokra van osztva, laptáblában tároljuk a lapokat. Ezeken keresztül tudjuk elérni a memória lapjait.  64 bites címezésnél ez már megvalósíthatatlan, ezért használunk TLB-t mellette.
 
 #####Mire használható a monitor?
    - Kölcsönös kizárásra, magasabb szinten. Akkor használható jól, ha CPU-knak közös memóriájuk van.
@@ -267,7 +256,7 @@
 
 #####Mit értünk monopol módú eszköz alatt?
    - Megszakíthatatlan, egyedi használatú eszköz.
-   - 
+
 #####Mit jelent az "interleave" fogalma?
    - Lemezek forgási sebessége miatt a blokkok nem feltétlenül szomszédosak
    - Interleave: párosával „szomszédosak”
