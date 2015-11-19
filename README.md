@@ -238,7 +238,7 @@
    - csak a folyamatoknak van: címtartománya, globális változója, gyermek folyamata, szignálkezelője...
    - csak szálnak van: utasításszámláló, regiszterek, verem
 
-#####Ismertesse a laptáblák szerepét! Van köze a TLB-Hez?
+#####Ismertesse a laptáblák szerepét! Van köze a TLB-hez?
    - A virtuális címtér lapokra van osztva, laptáblában tároljuk a lapokat. Ezeken keresztül tudjuk elérni a memória lapjait.  64 bites címezésnél ez már megvalósíthatatlan, ezért használunk TLB-t mellette.
 
 #####Mire használható a monitor?
@@ -250,7 +250,7 @@
 
 #####Mi a CHS-LBA címzés közti különbség? Van egyáltalán?
    - CHS korlát 504MB
-   - LBA minden szektor egyedi számot kap.
+   - LBA (Logical Block Addressing) minden szektor egyedi számot kap.
    - A BIOS a megszakítások paramétereit az átalakított geometriából lemez geometriává alakítja CHS-nél
    - míg szektor számmá LBA-nál.
 
@@ -295,16 +295,12 @@
    - Az a program, amely a közvetlen kommunikációt végzi.
 
 #####Melyik állítás lehet igaz? Miért?
-   - A: Szoftveresen kezelem le a hardver megszakítást.
-   - B: Hardveresen kezelem a szoftver megszakítást. (TALÁN)
+   - A: Szoftveresen kezelem le a hardver megszakítást. (TALÁN)
    	- Szoftveresen utasíthatom a hardvert, hogy szakítson meg egy folyamatot.
+   - B: Hardveresen kezelem a szoftver megszakítást.
 
 #####Miért hasznos a kölcsönös kizárás üzenetküldéses megvalósítása?
    - (SZERINTEM) A szerepek minden alkalommal cserélődhetnek, így az átlagos várakozási idő kicsi.
-
-
-
-
 
 #####Mit takar az alábbi algoritmus részlet, mi a baj vele, ha van?
 	while(1)
@@ -316,7 +312,7 @@
 	}
 	Hibás mutex/szemafor.
 
-#####Mi a memóriiakezelő feladata dinamikus memória használat során?
+#####Mi a memóriakezelő feladata dinamikus memória használat során?
    - A „dinamikus memóriakezelés” azt jelenti, hogy egyes memóriaterületek foglalását és felszabadítását mi vezéreljük a programból. A „dinamikus” szó az időre utal. A memóriakezelő nem szabadíthatja fel engedély nélkül.
 
 ### Egyebek:
