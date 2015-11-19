@@ -160,7 +160,7 @@
 #####Mit értünk tevékeny várakozás alatt?
    - A kölcsönös kizárásnál a CPU-t üres ciklusban járatjuk a várakozás során, így a CPU időt pazaroljuk pl. TSL, Peterson
 
-#####Mit értünk folyamatok erőforrás görbélyén, mire használható?
+#####Mit értünk folyamatok erőforrás görbéjén, mire használható?
    - Folyamatok erőforrás görbéje ábrázolja, hogy mikor mennyi erőforrásra van szüksége a folyamatoknak, és hol alakulhat ki holtpont, ez segít úgy tervezni, hogy elkerüljük a holtpontot, pl. bankár algoritmusnál használjuk.
 
 #####Mit értünk virtuális memóriakezelésen, mi a lényege? Mi a lapozás?
